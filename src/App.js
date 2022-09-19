@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BookingUnits from "./BookingUnits";
 import UnitTypes from "./UnitTypes";
 import Sidebar from "./Sidebar";
+import NotFound from './NotFound';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
             </Route>
            <Route path="/bookingunits">
             <BookingUnits />
+           </Route>            
+           <Route path="*">
+            <NotFound />
            </Route>            
           </Switch>
           </header>

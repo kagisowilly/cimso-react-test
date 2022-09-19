@@ -3,21 +3,21 @@ import axios from 'axios';
 
 const useFetch =(url) => {
     const [data,setData] = useState();
+    const [data2,setData2] = useState();
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
     useEffect(()=> {
-        const abortCont = new AbortController();
-
         async function getData(){
             try{
-                // console.log("Hello")
-        let res = await axios(url, {signal: abortCont.signal});
-    //    console.log(res)
-        if(res.status !== 200){
+        let res = await axios(url);
+        console.log(res)
+        if(res.data.error_code === -999){
             throw Error("Could not fetch dataaaaaaa")
         }else{
-        setData(res);
+          const { payload } = await res.data;
+          setData(payload["Unit Types"]);
+          setData2(payload["Booking Units"])
         setIsPending(false);
             }               
             }catch(err){
@@ -31,10 +31,9 @@ const useFetch =(url) => {
             }
         }
         getData();
-        return () => abortCont.abort();
 }, [url]);
 
-    return {data, isPending, error}
+    return {data,data2, isPending, error}
 }
 
 export default useFetch;

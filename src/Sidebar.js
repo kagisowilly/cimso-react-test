@@ -5,7 +5,7 @@ const  Sidebar= () => {
       <div className="sidebar-content">
         <div className="sidebar-div">
           <div className="title text-center">
-            <h1>NAVBAR</h1>
+              <img className="logo" src="./images/cimso-logo.png" alt="Navlogo" />
           </div>
           <div className="menu-items">
             <Link className="side-btn" to="/">
